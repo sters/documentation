@@ -119,7 +119,7 @@ before_script:
       when: on_success
 # ================== templates ================== #
 .base_template: &base_template
-  image: registry.ddbuild.io/ci/websites/webops-site-build:latest
+  image: registry.ddbuild.io/ci/websites/webops-site-build-preview:v38602481-881a3794
   tags:
     - "arch:amd64"
   rules:
@@ -421,6 +421,18 @@ manage_ignored_translations:on-schedule:
   script:
     - echo "Downloading ignored translation source files..."
     - manage_ignored_translation_files
+    
+manage_ignored_translations:manual-testing:
+  <<: *base_template
+  stage: post-deploy
+  cache: {}
+  environment: "live"
+  script:
+    - echo "Downloading ignored translation source files..."
+    - manage_ignored_translation_files
+  rules:
+    - if: '$CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_COMMIT_TAG =~ "/^$/"'
+    when: manual
 
 # This checks anchor links,
 # its too noisy to run all the time but we want some insight so its running on schedule
