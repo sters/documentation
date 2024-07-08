@@ -421,7 +421,7 @@ manage_ignored_translations:on-schedule:
   script:
     - echo "Downloading ignored translation source files..."
     - manage_ignored_translation_files
-    
+
 manage_ignored_translations:manual-testing:
   <<: *base_template
   stage: post-deploy
@@ -432,7 +432,7 @@ manage_ignored_translations:manual-testing:
     - manage_ignored_translation_files
   rules:
     - if: '$CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_COMMIT_TAG =~ "/^$/"'
-    when: manual
+      when: manual
 
 # This checks anchor links,
 # its too noisy to run all the time but we want some insight so its running on schedule
