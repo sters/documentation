@@ -14654,11 +14654,13 @@ components:
           $ref: '#/components/schemas/PermissionAttributes'
         id:
           description: ID of the permission.
+          example: '219'
           type: string
         type:
           $ref: '#/components/schemas/PermissionsType'
       required:
       - type
+      - id
       type: object
     PermissionAttributes:
       description: Attributes of a permission.
@@ -16266,15 +16268,21 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/RelationshipToPermissionData'
+      required:
+      - data
       type: object
     RelationshipToPermissionData:
       description: Relationship to permission object.
       properties:
         id:
           description: ID of the permission.
+          example: '219'
           type: string
         type:
           $ref: '#/components/schemas/PermissionsType'
+      required:
+      - id
+      - type
       type: object
     RelationshipToPermissions:
       description: Relationship to multiple permissions objects.
@@ -34158,6 +34166,9 @@ paths:
       x-menu-order: 7
       x-undo:
         type: safe
+    x-merge-override:
+      delete: true
+      post: true
   /api/v2/roles/{role_id}/users:
     delete:
       description: Removes a user from a role.
