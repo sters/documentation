@@ -3,6 +3,7 @@
     "attributes": {
       "is_enabled": true
     },
-    "type": "azure_uc_config_patch_request"
+    "type": "azure_uc_config_patch_request",
+    "id": "123456789123"
   }
 }

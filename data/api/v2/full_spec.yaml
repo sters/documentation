@@ -1905,11 +1905,16 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/AzureUCConfigPatchRequestAttributes'
+        id:
+          description: The ID of the Azure config.
+          example: '123456789123'
+          type: string
         type:
           $ref: '#/components/schemas/AzureUCConfigPatchRequestType'
       required:
       - attributes
       - type
+      - id
       type: object
     AzureUCConfigPatchRequest:
       description: Azure config Patch Request.
@@ -26703,6 +26708,8 @@ paths:
       x-menu-order: 7
       x-undo:
         type: idempotent
+    x-merge-override:
+      patch: true
   /api/v2/cost/enabled:
     get:
       description: Get the Cloud Cost Management activity.
