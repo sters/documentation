@@ -15416,14 +15416,20 @@ components:
       description: Property of the Synthetic Test Response to use for a Synthetic
         global variable.
       enum:
+      - grpc_message
+      - grpc_metadata
       - http_body
       - http_header
+      - http_status_code
       - local_variable
       example: http_body
       type: string
       x-enum-varnames:
+      - GRPC_MESSAGE
+      - GRPC_METADATA
       - HTTP_BODY
       - HTTP_HEADER
+      - HTTP_STATUS_CODE
       - LOCAL_VARIABLE
     SyntheticsGlobalVariableParserType:
       description: Type of parser for a Synthetic global variable from a synthetics
